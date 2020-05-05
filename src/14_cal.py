@@ -30,3 +30,23 @@ it should use today’s date to get the month and year.
 import sys
 import calendar
 from datetime import datetime
+# setting dates for today
+now = datetime.now()
+month = now.month
+year = now.year
+numArgs = len(sys.argv)
+invalidInput = "Please enter data with a valid month/year in num format.\n For instance Jan 1915 would be 1 1915"
+# determining if user provided month and year and then updating as needed
+if(numArgs >= 2):
+    x = sys.argv[1]
+    if(int(x) < 1 or int(x) > 12):
+        print(invalidInput)
+        sys.exit()
+    month = int(sys.argv[1])
+if(numArgs >= 3):
+    x = sys.argv[2]
+    if(int(x) < 1):
+        print(invalidInput)
+        sys.exit()
+    year = int(sys.argv[2])
+print(calendar.month(year, month))
